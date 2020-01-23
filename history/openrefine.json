@@ -95,7 +95,7 @@
       "mode": "row-based"
     },
     "baseColumnName": "ISSNs",
-    "urlExpression": "grel:\"https://api.crossref.org/journals/\"+value",
+    "urlExpression": "grel:\"https://portal.issn.org/resource/ISSN/\"+value",
     "onError": "set-to-blank",
     "newColumnName": "Journal Title",
     "columnInsertIndex": 8,
