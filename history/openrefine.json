@@ -1,0 +1,153 @@
+[
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Publisher",
+          "expression": "value",
+          "columnName": "Publisher",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Society of Pharmaceutical Technocrats",
+                "l": "Society of Pharmaceutical Technocrats"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "ISSNs",
+    "urlExpression": "grel:\"https://portal.issn.org/resource/ISSN/\"+value",
+    "onError": "set-to-blank",
+    "newColumnName": "ISSN-Lookup",
+    "columnInsertIndex": 8,
+    "delay": 5000,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine 3.2 [55c921b]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column ISSN-Lookup at index 8 by fetching URLs based on column ISSNs using expression grel:\"https://portal.issn.org/resource/ISSN/\"+value"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Publisher",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "MDPI AG "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "MDPI AG"
+      }
+    ],
+    "description": "Mass edit cells in column Publisher"
+  },
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Publisher",
+          "expression": "value",
+          "columnName": "Publisher",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Society of Pharmaceutical Technocrats",
+                "l": "Society of Pharmaceutical Technocrats"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "ISSNs",
+    "urlExpression": "grel:\"https://api.crossref.org/journals/\"+value",
+    "onError": "set-to-blank",
+    "newColumnName": "Journal Title",
+    "columnInsertIndex": 8,
+    "delay": 5000,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine 3.2 [55c921b]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column Journal Title at index 8 by fetching URLs based on column ISSNs using expression grel:\"https://api.crossref.org/journals/\"+value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Publisher",
+          "expression": "value",
+          "columnName": "Publisher",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Society of Pharmaceutical Technocrats",
+                "l": "Society of Pharmaceutical Technocrats"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Journal Title",
+    "expression": "grel:value.parseJson().message.title",
+    "onError": "set-to-blank",
+    "newColumnName": "Journal Title Title",
+    "columnInsertIndex": 9,
+    "description": "Create column Journal Title Title at index 9 based on column Journal Title using expression grel:value.parseJson().message.title"
+  }
+]
